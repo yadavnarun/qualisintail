@@ -1,0 +1,156 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/basics";
+
+.navbar {
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: $primary-dark;
+  color: $secondary-light;
+  box-shadow: 0 0 15px $black4;
+  z-index: 1;
+  height: 4rem;
+
+  img {
+    padding: $p1;
+    max-height: 3rem;
+    width: auto;
+  }
+
+  .user-menu {
+    display: flex;
+
+    .menu-options {
+      display: flex;
+
+      div {
+        padding: $p2;
+        cursor: pointer;
+        position: relative;
+
+        &:after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          transform: scaleX(0);
+          height: 0.1em;
+          bottom: 0;
+          right: 0;
+          background-color: $secondary-light;
+          transform-origin: bottom left;
+          transition: transform 0.2s ease-out;
+        }
+
+        &:hover:after {
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+
+        a {
+          text-decoration: none;
+          color: $secondary-light;
+        }
+      }
+    }
+  }
+
+  .user-options {
+    display: flex;
+
+    .menu {
+      display: none;
+      z-index: 2;
+    }
+
+    div {
+      padding: $p2;
+      cursor: pointer;
+    }
+  }
+}
+
+.user-popup {
+  position: absolute;
+  right: $m2;
+  max-width: max-content;
+  background-color: $secondary-light;
+  margin-top: $m2;
+  padding: $p3;
+  border-radius: $r1;
+  box-shadow: 0 0 3px $black3;
+  text-align: center;
+  z-index: 1;
+
+  .button {
+    padding: $p0;
+    margin: $m3;
+    color: $secondary-light;
+    background-color: $primary-dark;
+    border-radius: $r2;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+
+    &:hover {
+      background-color: $secondary-dark;
+    }
+  }
+
+  .manage {
+    background-color: transparent;
+    border: 1px solid $black3;
+
+    a {
+      text-decoration: none;
+      color: $black1;
+    }
+
+    &:hover {
+      background-color: $white3;
+    }
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .navbar {
+    .user-menu {
+      visibility: hidden;
+      position: fixed;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      background-color: $primary-dark;
+      z-index: 1;
+      opacity: 0;
+      transition: 0.3s ease-out;
+
+      .menu-options {
+        display: block;
+      }
+    }
+
+    .user-menu-sm {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .user-options {
+      display: flex;
+
+      .menu {
+        display: block;
+      }
+
+      div {
+        padding: $p2;
+        cursor: pointer;
+      }
+    }
+  }
+}

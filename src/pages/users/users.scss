@@ -1,0 +1,40 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/basics";
+
+.users-page {
+  margin-top: 4rem;
+
+  .users {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
+    justify-content: center;
+
+    a {
+      text-decoration: none;
+      color: $black1;
+    }
+
+    .user-box {
+      display: block;
+      margin: $m2;
+      padding: $p3;
+      background-color: $white2;
+      position: relative;
+
+      &::before {
+        content: "";
+        width: 2rem;
+        height: 2rem;
+        background-color: rgb(86, 86, 86);
+        position: absolute;
+        bottom: calc(100% - 1rem);
+        left: 5%;
+        border-radius: 100%;
+      }
+
+      div {
+        padding: $p1;
+      }
+    }
+  }
+}

@@ -1,0 +1,157 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/basics";
+
+.boards-page {
+  margin-top: 4rem;
+
+  .boards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
+    justify-content: center;
+
+    input {
+      width: 100%;
+      padding: $p1;
+      border: 1px solid rgb(32, 32, 32);
+      color: rgb(32, 32, 32);
+
+      &:focus {
+        background-color: rgba(218, 218, 218, 0.5);
+      }
+    }
+
+    .board {
+      background-color: $secondary-light;
+      margin: $m2;
+      position: relative;
+
+      h3 {
+        padding: $p3;
+        background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.7) 30%,
+          rgb(255, 255, 255) 100%
+        );
+
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          color: $primary-dark;
+          visibility: hidden;
+          opacity: 0;
+          transition: opacity 200ms ease-out;
+          cursor: pointer;
+        }
+
+        &:hover {
+          span {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+
+      .content {
+        overflow-y: scroll;
+        max-height: 75vh;
+        padding: $p1;
+
+        div {
+          display: flex;
+          padding: $p0;
+          justify-content: space-between;
+          align-items: center;
+
+          span {
+            visibility: hidden;
+            opacity: 0;
+            cursor: pointer;
+            transition: 200ms ease-out;
+          }
+
+          div {
+            width: 100%;
+            margin: 0 $m3;
+            overflow-y: auto;
+
+            &:focus {
+              background-color: $white1;
+            }
+          }
+
+          &:hover {
+            span {
+              visibility: visible;
+              opacity: 1;
+            }
+          }
+        }
+
+        .addBtn {
+          visibility: hidden;
+          opacity: 0;
+          display: block;
+          position: absolute;
+          bottom: $m2;
+          right: $m2;
+          border-radius: 100%;
+          cursor: pointer;
+          color: $primary-dark;
+          padding: 0;
+          font-size: $f4;
+          transition: opacity 300ms ease-in-out;
+        }
+      }
+
+      &:hover {
+        .content {
+          .addBtn {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .addBoardBtn {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      background-color: $primary-dark;
+      padding: $p2;
+      text-align: center;
+      font-size: $f2;
+      color: $white2;
+      cursor: pointer;
+      border-radius: $r4 0 0 0;
+    }
+  }
+
+  .remove {
+    input {
+      display: none;
+    }
+    .board {
+      h3 {
+        span {
+          display: none;
+        }
+      }
+      .content {
+        div {
+          span {
+            display: none;
+          }
+        }
+        .addBtn {
+          display: none;
+        }
+      }
+    }
+    .addBoardBtn {
+      display: none;
+    }
+  }
+}
